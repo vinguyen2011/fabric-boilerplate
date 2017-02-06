@@ -11,10 +11,11 @@ It has been created and is maintained by the IBM CIC Benelux Blockchain team. Pu
 To have good support in your IDE it's advisable to also install NPM, TypeScript, TSLint and Golang.
 
 ## Getting started
-1. `git clone` this repo  
-2. `cd` into the main directory and run `npm install` (or, if you don't have npm, `./install.sh`).
+1. Fork this repo
+2. `git clone` your fork  
+3. `cd` into the main directory and run `npm install` (or, if you don't have npm, `./install.sh`).
 
-This will pull the baseimage, peer and memberservie, download the Go dependencies of the chaincode and build your containers. It will take a while.  
+This will pull the baseimage, peer and memberservice, download the Go dependencies of the chaincode and build your containers. It will take a while.  
 
 To get rid of missing module errors in your IDE, also run `npm install` from the `server` and `client` directory. This is not mandatory to run the application.
 
@@ -116,10 +117,10 @@ After the app has been pushed to Bluemix, you can view the logs with:
 Where NAME_OF_THE_APP is the app name you provided in the manifest.yml file.
 
 # Support and documentation
-Hyperledger project:                https://www.hyperledger.org/
-Official Hyperledger slack channel: https://hyperledgerproject.slack.com
-IRC:                                #hyperledger on freenode.net
-Wiki:                               https://wiki.hyperledger.org/
-HFC:                                https://www.npmjs.com/package/hfc/  
-Bluemix                             https://console.ng.bluemix.net/docs/  
-IBM on blockchain:                  https://www.ibm.com/blockchain/what-is-blockchain.html  
+Hyperledger project:                https://www.hyperledger.org/  
+Hyperledger Fabric Docs             https://hyperledger-fabric.readthedocs.io/en/latest/  
+Official Hyperledger Rocket Chat:   https://chat.hyperledger.org/  
+Wiki:                               https://wiki.hyperledger.org/  
+HFC:                                https://www.npmjs.com/package/hfc/    
+Bluemix                             https://console.ng.bluemix.net/docs/    
+IBM on blockchain:                  https://www.ibm.com/blockchain/what-is-blockchain.html    
