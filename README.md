@@ -11,9 +11,11 @@ It has been created and is maintained by the IBM CIC Benelux Blockchain team. Pu
 To have good support in your IDE it's advisable to also install NPM, TypeScript, TSLint and Golang.
 
 ## Getting started
-1. Fork this repo
+1. Fork this repo  
 2. `git clone` your fork  
-3. `cd` into the main directory and run `npm install` (or, if you don't have npm, `./install.sh`).
+3. `cd` into the main directory  
+4. `git checkout v2-typescript`  
+5. `npm install` (or, if you don't have npm, `./install.sh`).  
 
 This will pull the baseimage, peer and memberservice, download the Go dependencies of the chaincode and build your containers. It will take a while.  
 
