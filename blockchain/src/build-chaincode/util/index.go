@@ -9,11 +9,15 @@ import (
 var UsersIndexName = "_users"
 var ThingsIndexName = "_things"
 var ProjectsIndexName = "_projects"
+var VotersIndexName = "_voters"
+
+var VoterIndexPrefix = "voter_" //seperate namespace for voter and user data
 
 var indexNames = []string{
 	UsersIndexName,
 	ThingsIndexName,
 	ProjectsIndexName,
+	VotersIndexName,
 }
 
 //id = project.ProjectID, indexName = "_projects", byte = projectAsBytes

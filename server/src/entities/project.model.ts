@@ -6,18 +6,25 @@ export class Project {
     private _projectID: string;
 
     public constructor(private _description: string,
+                       private _name: string,
                        private _location: string,
                        private _tags: string[],
-                       private _voteRestriction: string,
+                       private _voteRestrictionField: string,
+                       private _voteRestrictionValues: string[],
                        private _expiryDate: number,
                        private _cost: number,
-                       private _costCovered: number
+                       private _costCovered: number,
+                       private _pictureId: number
                        ) {
         this._projectID = shortID.generate();
     }
 
     public get projectID(): string {
         return this._projectID;
+    }
+
+    public get name(): string {
+        return this._name;
     }
 
     public get description(): string {
@@ -32,8 +39,12 @@ export class Project {
         return this._tags;
     }
 
-    public get voteRestriction(): string {
-        return this._voteRestriction;
+    public get voteRestrictionField(): string {
+        return this._voteRestrictionField;
+    }
+
+    public get voteRestrictionValues(): string[] {
+        return this._voteRestrictionValues;
     }
 
     public get expiryDate(): number {
@@ -48,16 +59,23 @@ export class Project {
         return this._costCovered;
     }
 
+    public get pictureId(): number {
+        return this._pictureId;
+    }
+
     public toJSON(): any {
         return {
             'projectId': this.projectID,
+            'name': this.name,
             'description': this.description,
             'location': this.location,
             'tags': this.tags,
-            'voteRestriction': this.voteRestriction,
+            'voteRestrictionField': this.voteRestrictionField,
+            'voteRestrictionValues': this.voteRestrictionValues,
             'expiryDate': this.expiryDate,
             'cost': this.cost,
-            'costCovered': this.costCovered
+            'costCovered': this.costCovered,
+            'pictureId': this.pictureId
         };
     }
 }

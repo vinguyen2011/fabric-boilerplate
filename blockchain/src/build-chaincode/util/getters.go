@@ -35,7 +35,7 @@ func GetProjectsForVoter(stub shim.ChaincodeStubInterface, voterID string) ([]en
 			return []entities.Project{}, errors.New("Error while unmarshalling projectAsBytes, reason: " + err.Error())
 		}
 		
-		if ValidateProjectForVoter(project, voterID) {
+		if ValidateProjectForVoterId(stub, project, voterID) {
 			
 			//projects = append(projects, string(projectAsBytes))
 			projects = append(projects, project)
@@ -46,11 +46,70 @@ func GetProjectsForVoter(stub shim.ChaincodeStubInterface, voterID string) ([]en
 	return projects, nil
 }
 
-func ValidateProjectForVoter(project entities.Project, voterID string) (bool) {
+func GetVoter(stub shim.ChaincodeStubInterface, voterID string) (entities.Voter, error) {
 	
-	//TODO: validate/filter!
+	voterAsBytes, err := stub.GetState(VoterIndexPrefix + voterID)
+	if err != nil {
+		return entities.Voter{}, errors.New("Could not retrieve Voter for ID " + voterID + " reason: " + err.Error())
+	}
+
+	var voter entities.Voter
+	err = json.Unmarshal(voterAsBytes, &voter)
+	if err != nil {
+		return entities.Voter{}, errors.New("Error while unmarshalling voterAsBytes, reason: " + err.Error())
+	}
 	
-	return true
+	return voter, nil
+
+}
+
+
+func ValidateProjectForVoterId(stub shim.ChaincodeStubInterface, project entities.Project, voterID string) (bool) {
+	
+	voter, err := GetVoter(stub, voterID)
+
+	if err != nil {
+		return false
+	}
+
+	return ValidateProjectForVoter(project, voter)
+	
+}
+
+func ValidateProjectForVoter(project entities.Project, voter entities.Voter) (bool) {
+	
+	//validation 1: check if the user is voting twice!
+	for _, votedProjectID := range voter.ProjectIDs {
+		if votedProjectID == project.ProjectID {
+			//user already voted. double spend!
+			return false
+		}
+	}
+
+	//validation 2: check if the user is allowed to vote on this project
+	if project.VoteRestrictionField == "LOCATION" {
+	
+		return ContainsInList(project.VoteRestrictionValues, voter.Location)
+		
+	} else if project.VoteRestrictionField == "GENDER" {
+	
+		return ContainsInList(project.VoteRestrictionValues, voter.Gender)
+		
+	}
+	
+	return false; 
+	
+}
+
+func ContainsInList(list []string, item string) (bool) {
+	
+	for _, listItem := range list {
+		if listItem == item {
+			return true
+		}
+	}
+	
+	return false;
 	
 }
 

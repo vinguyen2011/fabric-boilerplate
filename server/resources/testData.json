@@ -10,6 +10,17 @@
           "value": "john"
         }
       ]
+    },
+    {
+      "userID": "janneke",
+      "username": "janneke",
+      "password": "passw0rd",
+      "attributes": [
+        {
+          "name": "userID",
+          "value": "janneke"
+        }
+      ]
     }
   ],
   "things": [
@@ -22,6 +33,11 @@
       "thingID": "2",
       "userID": "john",
       "someProperty": "124914266456"
+    },
+    {
+      "thingID": "3",
+      "userID": "janneke",
+      "someProperty": "787248979889"
     }
   ]
 }

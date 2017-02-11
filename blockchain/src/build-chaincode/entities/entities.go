@@ -51,14 +51,17 @@ func (t *Thing) ID() string {
 //======================================================================================================================
 
 type Project struct {
-	ProjectID   		string 		`json:"projectId"`
-	Description 		string 		`json:"description"`
-	Location     		string 		`json:"location"`
-	Tags 				[]string 	`json:"tags"`
-	VoteRestriction		string		`json:"voteRestriction"`
-	ExpiryDate			uint64		`json:"expiryDate"`
-	Cost     			uint64 		`json:"cost"`
-	CostCovered			uint64		`json:"costCovered"`
+	ProjectID   			string 		`json:"projectId"`
+	Name					string		`json:"name"`
+	Description 			string 		`json:"description"`
+	Location     			string 		`json:"location"`
+	Tags 					[]string 	`json:"tags"`
+	VoteRestrictionField	string		`json:"voteRestrictionField"`
+	VoteRestrictionValues	[]string	`json:"voteRestrictionValues"`
+	ExpiryDate				uint64		`json:"expiryDate"`
+	Cost     				uint64 		`json:"cost"`
+	CostCovered				uint64		`json:"costCovered"`
+	PictureID				uint64		`json:"pictureId"`
 }
 
 type Projects struct {
@@ -69,11 +72,13 @@ type Voter struct {
 	VoterId				string		`json:"voterId"`
 	Location     		string 		`json:"location"`
 	Gender				string		`json:"gender"`
-	Age					string		`json:"age"`
+	Dob					uint64		`json:"dob"`
+	ProjectIDs   		[]string 	`json:"projectIds"`
 }
 
 type Vote struct {
 	VoterId				string		`json:"voterId"`
+	ProjectID   		string 		`json:"projectId"`
 	VotePercent			float32		`json:"voterPercent"`
 }
 

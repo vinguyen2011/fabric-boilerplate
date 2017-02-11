@@ -56,6 +56,10 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		
 		return nil, t.addProject(stub, args[0])
 
+	}  else if functionName == "addVoter" {
+		
+		return nil, t.addVoter(stub, args[0])
+
 	} 
 
 	return nil, errors.New("Received unknown invoke function name")
@@ -98,6 +102,7 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return thingsByUserID, nil
+		
 	} else if functionName == "getProjectsForVoter" {
 
 		projects, err := util.GetProjectsForVoter(stub, args[0])
@@ -107,6 +112,16 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return projects, nil
+		
+	} else if functionName == "getVoter" {
+
+		voter, err := util.GetVoter(stub, args[0])
+		
+		if err != nil {
+			return nil, errors.New("could not retrieve voter, reason: " + err.Error())
+		}
+
+		return voter, nil
 		
 	}
 
@@ -157,6 +172,27 @@ func (t *Chaincode) addProject(stub shim.ChaincodeStubInterface, projectJSONObje
 		}
 
 		util.StoreObjectInChain(stub, project.ProjectID, util.ProjectsIndexName, projectAsBytes)
+
+		return nil
+	
+}
+
+func (t *Chaincode) addVoter(stub shim.ChaincodeStubInterface, voterJSONObject string) error {
+	
+		var voter entities.Voter
+		
+		if err := json.Unmarshal([]byte(voterJSONObject), &voter); err != nil {
+			return errors.New("Error while unmarshalling voter, reason: " + err.Error())
+		}
+
+		voterAsBytes, err := json.Marshal(voter);
+		
+		if err != nil {
+			return errors.New("Error marshalling voter, reason: " + err.Error())
+		}
+
+		//util.StoreObjectInChain(stub, voter.VoterId, util.VotersIndexName, voterAsBytes)
+		util.StoreObjectInChain(stub, util.VoterIndexPrefix + voter.VoterId, util.VotersIndexName, voterAsBytes)
 
 		return nil
 	

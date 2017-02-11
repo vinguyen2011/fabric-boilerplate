@@ -21,13 +21,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"username\": \"{{user}}\", \"password\": \"passw0rd\"}"
+					"raw": "{ \"username\": \"john\", \"password\": \"passw0rd\"}"
 				},
 				"description": ""
 			},
 			"response": [
 				{
-					"id": "138bd78e-8606-44d8-aa86-852cb4ea2634",
+					"id": "e71c8262-a0bf-4ab0-8248-b4ffc9a1fcef",
 					"name": "Success",
 					"originalRequest": {
 						"url": "{{url}}/auth/login",
@@ -122,7 +122,7 @@
 			},
 			"response": [
 				{
-					"id": "495ce1ef-6ac6-4a4f-9b1f-d5d237675479",
+					"id": "98ec2b5c-262d-4a22-84f4-060e571e6b7d",
 					"name": "Success",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/things/{{user}}",
@@ -199,6 +199,196 @@
 			]
 		},
 		{
+			"name": "{{url}}/api/v1/projects",
+			"request": {
+				"url": "{{url}}/api/v1/projects",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"_name\": \"Increase maternity leave\",\n\t\"_description\": \"Increate maternity leave for working women\",\n\t\"_location\": \"Netherlands\",\n\t\"_tags\":[\"life\"],\n\t\"_voteRestrictionField\": \"GENDER\",\n\t\"_voteRestrictionValues\": [\"FEMALE\"],\n\t\"_expiryDate\": 1486977874,\n\t\"_cost\": 10000,\n\t\"_costCovered\": 0,\n\t\"_pictureId\": 1200\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "3ab382fe-b389-47c2-b158-b3e1a6dea3e8",
+					"name": "Success1",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/projects",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_name\": \"Repair cycle path next to Zomaarweg\",\n\t\"_description\": \"The cycle path next to Zomaarweg is not safe and is in urgent need of repair\",\n\t\"_location\": \"Amsterdam Centrum\",\n\t\"_tags\":[\"infrastructure\", \"leisure\"],\n\t\"_voteRestrictionField\": \"LOCATION\",\n\t\"_voteRestrictionValues\": [\"Amsterdam Oost\", \"Amsterdam Centrum\"],\n\t\"_expiryDate\": 1486977874,\n\t\"_cost\": 10000,\n\t\"_costCovered\": 0,\n\t\"_pictureId\": 1200\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 14:13:02 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-aGIUKgYX9NChebFY0S3U/A\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5033,
+					"body": "{\"result\":\"Tx fd555e5f-0caa-4962-934c-eded3f585562 complete\"}"
+				},
+				{
+					"id": "1a9e4c37-de16-43e8-b5d7-90f841e9900d",
+					"name": "Success2",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/projects",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_name\": \"Increase maternity leave\",\n\t\"_description\": \"Increate maternity leave for working women\",\n\t\"_location\": \"Netherlands\",\n\t\"_tags\":[\"life\"],\n\t\"_voteRestrictionField\": \"GENDER\",\n\t\"_voteRestrictionValues\": [\"FEMALE\"],\n\t\"_expiryDate\": 1486977874,\n\t\"_cost\": 10000,\n\t\"_costCovered\": 0,\n\t\"_pictureId\": 1200\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 14:15:37 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-uJM09e4yh8oz3/G59AQXYw\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5061,
+					"body": "{\"result\":\"Tx cd3c3423-1521-42d2-89e6-66a5bbef40b5 complete\"}"
+				}
+			]
+		},
+		{
 			"name": "{{url}}/api/v1/projects/voter/{{user}}",
 			"request": {
 				"url": "{{url}}/api/v1/projects/voter/{{user}}",
@@ -215,7 +405,7 @@
 			},
 			"response": [
 				{
-					"id": "9ebad86b-341c-41fe-a180-d61c1b07736c",
+					"id": "398bdf8e-b98d-4f63-b1b8-53997b252368",
 					"name": "Success",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/projects/voter/{{user}}",
@@ -292,9 +482,9 @@
 			]
 		},
 		{
-			"name": "{{url}}/api/v1/projects",
+			"name": "{{url}}/api/v1/voters",
 			"request": {
-				"url": "{{url}}/api/v1/projects",
+				"url": "{{url}}/api/v1/voters",
 				"method": "POST",
 				"header": [
 					{
@@ -310,13 +500,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"_description\": \"some desc\", \"_location\": \"some location\", \"_tags\":[\"tag1\", \"tag2\"], \"_voteRestriction\": \"some vote restriction\", \"_expiryDate\": 1486977874, \"_cost\": 100000, \"_costCovered\": 0}"
+					"raw": "{ \n\t\"_voterId\": \"john\",\n\t\"_location\": \"Amsterdam Centrum\",\n\t\"_gender\": \"MALE\",\n\t\"_dob\": 315582360\n}"
 				},
 				"description": ""
 			},
 			"response": [
 				{
-					"id": "ed305c50-9213-41dd-8006-3d0c5ef27607",
+					"id": "385b0e34-cba0-42e1-b374-3e0ce414cfa7",
 					"name": "Success",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/projects",
@@ -593,6 +783,263 @@
 					"cookie": [],
 					"responseTime": 5026,
 					"body": "{\"result\":\"Tx fa59502f-b0e8-4a4b-9b1d-878be797b151 complete\"}"
+				},
+				{
+					"id": "acea025c-b31c-45a0-b5e9-7b183bf62dfe",
+					"name": "Success1",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/voters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_voterId\": \"john\",\n\t\"_location\": \"Amsterdam Centrum\",\n\t\"_gender\": \"MALE\",\n\t\"_dob\": 315582360\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 14:02:06 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-MLyjcZSeBOGrZGSaGw4PMw\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5026,
+					"body": "{\"result\":\"Tx 2dd8f9f0-6435-4f05-9813-b35a31c30018 complete\"}"
+				},
+				{
+					"id": "4e2fb82e-4b00-4c12-8305-5bad67914414",
+					"name": "Success2",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/voters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_voterId\": \"janneke\",\n\t\"_location\": \"Groningen\",\n\t\"_gender\": \"FEMALE\",\n\t\"_dob\": 315528373\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 14:12:21 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-qyj2j+gxXYyU45M8nBxkrQ\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5041,
+					"body": "{\"result\":\"Tx 8fdb73de-7c51-4f2c-a900-0736560ac50f complete\"}"
+				}
+			]
+		},
+		{
+			"name": "{{url}}/api/v1/voter/{{user}}",
+			"request": {
+				"url": "{{url}}/api/v1/voters/{{user}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "980aa71d-7740-45fe-be2e-4f217126e37f",
+					"name": "Success",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/projects/voter/{{user}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "397",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 08:01:54 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"18d-k6pqb+iJEH0d1o8CWZXlNA\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 25,
+					"body": "[{\"projectId\":\"SyUozB3ul\",\"description\":\"some desc\",\"location\":\"some location\",\"tags\":[\"tag1\",\"tag2\"],\"voteRestriction\":\"some vote restriction\",\"expiryDate\":1486977874,\"cost\":100000,\"costCovered\":0},{\"projectId\":\"HyxpfShue\",\"description\":\"some desc\",\"location\":\"some location\",\"tags\":[\"tag1\",\"tag2\"],\"voteRestriction\":\"some vote restriction\",\"expiryDate\":1486977874,\"cost\":100000,\"costCovered\":0}]"
 				}
 			]
 		}

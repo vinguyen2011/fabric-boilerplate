@@ -31,6 +31,7 @@
     "files": [
         "src/api/v1/ThingsController.ts",
         "src/api/v1/ProjectsController.ts",
+        "src/api/v1/VotersController.ts",
         "src/auth/AuthController.ts",
         "src/auth/ClientAuthenticator.ts",
         "src/auth/index.ts",
