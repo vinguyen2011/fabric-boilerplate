@@ -35,7 +35,7 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 	} else if functionName == "addUser" {
 		return nil, t.addUser(stub, args[0], args[1])
 	} else if functionName == "addTestdata" {
-		return nil, t.addTestdata(stub, args[0])
+		return nil, t.addTestdata(stub, args[0], args[1], args[2])
 	} else if functionName == "createThing" {
 		thingAsJSON := args[0]
 
@@ -214,7 +214,7 @@ func (t *Chaincode) addUser(stub shim.ChaincodeStubInterface, index string, user
 	return nil
 }
 
-func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson string) error {
+func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson string, testVotersDataAsJson string, testProjectsDataAsJson string) error {
 	var testData entities.TestData
 	err := json.Unmarshal([]byte(testDataAsJson), &testData)
 	if err != nil {
@@ -244,6 +244,45 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 			return errors.New("error in storing object, reason: " + err.Error())
 		}
 	}
+	
+	//voters data
+	logger.Infof("testVotersDataAsJson = " + testVotersDataAsJson)
+
+	var testVotersData []entities.Voter
+	testVotersDataUnmarshallError := json.Unmarshal([]byte(testVotersDataAsJson), &testVotersData)
+	if testVotersDataUnmarshallError != nil {
+		return errors.New("Error while unmarshalling testVotersDataAsJson")
+	}
+
+	for _, testVoter := range testVotersData {
+		testVoterAsBytes, err := json.Marshal(testVoter);
+		if err != nil {
+			return errors.New("Error marshalling testVoter, reason: " + err.Error())
+		}
+
+		util.StoreObjectInChain(stub, util.VoterIndexPrefix + testVoter.VoterId, util.VotersIndexName, testVoterAsBytes)
+
+	}
+	
+	//projects data
+	logger.Infof("testProjectsDataAsJson = " + testProjectsDataAsJson)
+
+	var testProjectsData []entities.Project
+	testProjectsDataUnmarshallError := json.Unmarshal([]byte(testProjectsDataAsJson), &testProjectsData)
+	if testProjectsDataUnmarshallError != nil {
+		return errors.New("Error while unmarshalling testProjectsDataAsJson")
+	}
+
+	for _, testProject := range testProjectsData {
+		testProjectAsBytes, err := json.Marshal(testProject);
+		if err != nil {
+			return errors.New("Error marshalling testProject, reason: " + err.Error())
+		}
+
+		util.StoreObjectInChain(stub, testProject.ProjectID, util.ProjectsIndexName, testProjectAsBytes)
+
+	}
+	
 
 	return nil
 }
