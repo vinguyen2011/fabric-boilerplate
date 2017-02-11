@@ -52,7 +52,11 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		util.StoreObjectInChain(stub, thing.ThingID, util.ThingsIndexName, thingAsBytes)
 
 		return nil, nil
-	}
+	} else if functionName == "addProject" {
+		
+		return nil, t.addProject(stub, args[0])
+
+	} 
 
 	return nil, errors.New("Received unknown invoke function name")
 }
@@ -94,6 +98,16 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return thingsByUserID, nil
+	} else if functionName == "getProjectsForVoter" {
+
+		projects, err := util.GetProjectsForVoter(stub, args[0])
+		
+		if err != nil {
+			return nil, errors.New("could not retrieve projects, reason: " + err.Error())
+		}
+
+		return projects, nil
+		
 	}
 
 	return nil, errors.New("Received unknown query function name")
@@ -127,6 +141,28 @@ func (t *Chaincode) Init(stub shim.ChaincodeStubInterface, function string, args
 //======================================================================================================================
 //  Invoke Functions
 //======================================================================================================================
+
+func (t *Chaincode) addProject(stub shim.ChaincodeStubInterface, projectJSONObject string) error {
+	
+		var project entities.Project
+		
+		if err := json.Unmarshal([]byte(projectJSONObject), &project); err != nil {
+			return errors.New("Error while unmarshalling project, reason: " + err.Error())
+		}
+
+		projectAsBytes, err := json.Marshal(project);
+		
+		if err != nil {
+			return errors.New("Error marshalling project, reason: " + err.Error())
+		}
+
+		util.StoreObjectInChain(stub, project.ProjectID, util.ProjectsIndexName, projectAsBytes)
+
+		return nil
+	
+}
+
+
 
 func (t *Chaincode) addUser(stub shim.ChaincodeStubInterface, index string, userJSONObject string) error {
 	id, err := util.WriteIDToBlockchainIndex(stub, util.UsersIndexName, index)

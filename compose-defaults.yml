@@ -17,4 +17,5 @@ vp:
     - "7057"  # eCAA
     - "7058"  # tlsCAP
     - "7059"  # tlsCAA
+  # command: sh -c "sleep 8; peer node start --logging-level=debug"
   command: sh -c "sleep 8; peer node start"

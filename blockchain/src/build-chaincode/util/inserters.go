@@ -7,6 +7,7 @@ import (
 	"errors"
 )
 
+//objectID = project.ProjectID, indexName = "_projects", byte = projectAsBytes
 func StoreObjectInChain(stub shim.ChaincodeStubInterface, objectID string, indexName string, object []byte) error {
 	ID, err := WriteIDToBlockchainIndex(stub, indexName, objectID)
 	if err != nil {

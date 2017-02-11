@@ -8,12 +8,15 @@ import (
 
 var UsersIndexName = "_users"
 var ThingsIndexName = "_things"
+var ProjectsIndexName = "_projects"
 
 var indexNames = []string{
 	UsersIndexName,
 	ThingsIndexName,
+	ProjectsIndexName,
 }
 
+//id = project.ProjectID, indexName = "_projects", byte = projectAsBytes
 func WriteIDToBlockchainIndex(stub shim.ChaincodeStubInterface, indexName string, id string) ([]byte, error) {
 	index, err := GetIndex(stub, indexName)
 	if err != nil {
@@ -56,6 +59,7 @@ func ResetIndexes(stub shim.ChaincodeStubInterface, logger *shim.ChaincodeLogger
 	return nil
 }
 
+//indexName = "_projects"
 func GetIndex(stub shim.ChaincodeStubInterface, indexName string) ([]string, error) {
 	indexAsBytes, err := stub.GetState(indexName)
 	if err != nil {
@@ -65,7 +69,7 @@ func GetIndex(stub shim.ChaincodeStubInterface, indexName string) ([]string, err
 	var index []string
 	err = json.Unmarshal(indexAsBytes, &index)
 	if err != nil {
-		return nil, errors.New("Error unmarshalling index '" + indexName + "': " + err.Error())
+		return nil, errors.New("Error unmarshalling index '" + indexName + "', indexAsBytes = " + string(indexAsBytes) + ": " + err.Error())
 	}
 
 	return index, nil

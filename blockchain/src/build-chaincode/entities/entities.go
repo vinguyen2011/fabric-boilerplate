@@ -45,3 +45,41 @@ func (t *User) ID() string {
 func (t *Thing) ID() string {
 	return t.ThingID
 }
+
+//======================================================================================================================
+// model 
+//======================================================================================================================
+
+type Project struct {
+	ProjectID   		string 		`json:"projectId"`
+	Description 		string 		`json:"description"`
+	Location     		string 		`json:"location"`
+	Tags 				[]string 	`json:"tags"`
+	VoteRestriction		string		`json:"voteRestriction"`
+	ExpiryDate			uint64		`json:"expiryDate"`
+	Cost     			uint64 		`json:"cost"`
+	CostCovered			uint64		`json:"costCovered"`
+}
+
+type Projects struct {
+	Projects []Project `json:"projects"`
+}
+
+type Voter struct {
+	VoterId				string		`json:"voterId"`
+	Location     		string 		`json:"location"`
+	Gender				string		`json:"gender"`
+	Age					string		`json:"age"`
+}
+
+type Vote struct {
+	VoterId				string		`json:"voterId"`
+	VotePercent			float32		`json:"voterPercent"`
+}
+
+type ProjectVotes struct {
+	ProjectID   		string 		`json:"projectId"`
+	Votes				[]Vote		`json:"votes"`
+}
+
+

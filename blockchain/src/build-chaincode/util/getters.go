@@ -16,6 +16,45 @@ func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, 
 	return GetUser(stub, string(userIDAsBytes))
 }
 
+func GetProjectsForVoter(stub shim.ChaincodeStubInterface, voterID string) ([]entities.Project, error) {
+	projectsIndex, err := GetIndex(stub, ProjectsIndexName)
+	if err != nil {
+		return []entities.Project{}, errors.New("Unable to retrieve projectsIndex, reason: " + err.Error())
+	}
+
+	projects := []entities.Project{}
+	for _, projectID := range projectsIndex {
+		projectAsBytes, err := stub.GetState(projectID)
+		if err != nil {
+			return []entities.Project{}, errors.New("Could not retrieve project for ID " + projectID + " reason: " + err.Error())
+		}
+
+		var project entities.Project
+		err = json.Unmarshal(projectAsBytes, &project)
+		if err != nil {
+			return []entities.Project{}, errors.New("Error while unmarshalling projectAsBytes, reason: " + err.Error())
+		}
+		
+		if ValidateProjectForVoter(project, voterID) {
+			
+			//projects = append(projects, string(projectAsBytes))
+			projects = append(projects, project)
+		}
+		
+	}
+
+	return projects, nil
+}
+
+func ValidateProjectForVoter(project entities.Project, voterID string) (bool) {
+	
+	//TODO: validate/filter!
+	
+	return true
+	
+}
+
+
 func GetThingsByUserID(stub shim.ChaincodeStubInterface, userID string) ([]string, error) {
 	thingsIndex, err := GetIndex(stub, ThingsIndexName)
 	if err != nil {
