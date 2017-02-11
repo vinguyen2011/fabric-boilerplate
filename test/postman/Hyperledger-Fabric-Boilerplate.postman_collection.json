@@ -27,8 +27,8 @@
 			},
 			"response": [
 				{
-					"id": "e71c8262-a0bf-4ab0-8248-b4ffc9a1fcef",
-					"name": "Success",
+					"id": "9689a90f-a826-4509-9972-654d1c3113eb",
+					"name": "Success-John",
 					"originalRequest": {
 						"url": "{{url}}/auth/login",
 						"method": "POST",
@@ -42,7 +42,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"username\": \"{{user}}\", \"password\": \"passw0rd\"}"
+							"raw": "{ \"username\": \"john\", \"password\": \"passw0rd\"}"
 						}
 					},
 					"status": "OK",
@@ -83,13 +83,13 @@
 						{
 							"name": "Date",
 							"key": "Date",
-							"value": "Sat, 11 Feb 2017 09:24:50 GMT",
+							"value": "Sat, 11 Feb 2017 21:32:34 GMT",
 							"description": "The date and time that the message was sent"
 						},
 						{
 							"name": "ETag",
 							"key": "ETag",
-							"value": "W/\"2cd-lr+lr56koroz8IgtBhH5hg\"",
+							"value": "W/\"2cd-mzS1Li9PfxAFtBngL8EBuQ\"",
 							"description": "An identifier for a specific version of a resource, often a message digest"
 						},
 						{
@@ -100,8 +100,8 @@
 						}
 					],
 					"cookie": [],
-					"responseTime": 1609,
-					"body": "{\"authenticated\":true,\"message\":null,\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJqb2huIiwidXNlcm5hbWUiOiJqb2huIiwicGFzc3dvcmQiOiIiLCJzYWx0IjoiNmU3ZWRlYTJhN2U3YTgxMGVmZTIwYTQ4MjJkN2I4YTIiLCJoYXNoIjoiNjhhNWVmZGQ0NDZkMzdhOTgwZTAyNzU3NWM3NjQ3NWE1NWQxNmRjYmY1OTViYzYzZDgxOTA5NGZjYzk0NmFjZWVhNzIxMWQ4YTExM2JiNTEwZGMxMjgzZWRmMjIwYmQzZGQ0M2MxN2UwYjRiY2I1Zjc5OWI4ZGU0NWIwZDlhYzAiLCJpYXQiOjE0ODY4MDUwOTAsImV4cCI6MTQ4Njg5MTQ5MH0.SUHc3ckohH0MQeF6SvitL7PTvLOKMb2svI8x2e6fzqg\",\"user\":{\"userID\":\"john\",\"username\":\"john\",\"password\":\"\",\"salt\":\"6e7edea2a7e7a810efe20a4822d7b8a2\",\"hash\":\"68a5efdd446d37a980e027575c76475a55d16dcbf595bc63d819094fcc946aceea7211d8a113bb510dc1283edf220bd3dd43c17e0b4bcb5f799b8de45b0d9ac0\"}}"
+					"responseTime": 1312,
+					"body": "{\"authenticated\":true,\"message\":null,\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJqb2huIiwidXNlcm5hbWUiOiJqb2huIiwicGFzc3dvcmQiOiIiLCJzYWx0IjoiYTIwMGM4MzViZjZlODNhNTQxYjliYzM1MzdmMGMxNmIiLCJoYXNoIjoiZWY2NzA1ZjRmMWEzNjJmM2VmMjQ2YTRlMGRlNmEzMmRjN2MxYWUyZGJlMWE2NGU0NzdkNDVjZTQwZmJmMmFiZTNiNzVjOTJmOGFlYTVmZDE5NjBkM2E5MTMxNjUyMGQxNGIxODYyMjU5YWY0OTI0YzJiMTIxYTI4NTc4Zjk3YzMiLCJpYXQiOjE0ODY4NDg3NTQsImV4cCI6MTQ4NjkzNTE1NH0.sK3drapO_wyR3CRRogKvyj1RR29zXbQWSMTxAsNuxQ4\",\"user\":{\"userID\":\"john\",\"username\":\"john\",\"password\":\"\",\"salt\":\"a200c835bf6e83a541b9bc3537f0c16b\",\"hash\":\"ef6705f4f1a362f3ef246a4e0de6a32dc7c1ae2dbe1a64e477d45ce40fbf2abe3b75c92f8aea5fd1960d3a91316520d14b1862259af4924c2b121a28578f97c3\"}}"
 				}
 			]
 		},
@@ -122,8 +122,8 @@
 			},
 			"response": [
 				{
-					"id": "98ec2b5c-262d-4a22-84f4-060e571e6b7d",
-					"name": "Success",
+					"id": "fb78dc9e-9866-4977-8d07-081b42f5666c",
+					"name": "Success-John",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/things/{{user}}",
 						"method": "GET",
@@ -131,9 +131,7 @@
 							{
 								"key": "x-access-token",
 								"value": "{{token}}",
-								"type": "text",
-								"enabled": true,
-								"warning": ""
+								"enabled": true
 							}
 						],
 						"body": {}
@@ -176,7 +174,7 @@
 						{
 							"name": "Date",
 							"key": "Date",
-							"value": "Sat, 11 Feb 2017 05:48:31 GMT",
+							"value": "Sat, 11 Feb 2017 21:32:58 GMT",
 							"description": "The date and time that the message was sent"
 						},
 						{
@@ -193,7 +191,7 @@
 						}
 					],
 					"cookie": [],
-					"responseTime": 33,
+					"responseTime": 28,
 					"body": "[\"1\",\"2\"]"
 				}
 			]
@@ -223,7 +221,7 @@
 			},
 			"response": [
 				{
-					"id": "3ab382fe-b389-47c2-b158-b3e1a6dea3e8",
+					"id": "f2918420-f44a-425e-8a60-ab38dc8d4afe",
 					"name": "Success1",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/projects",
@@ -305,7 +303,7 @@
 					"body": "{\"result\":\"Tx fd555e5f-0caa-4962-934c-eded3f585562 complete\"}"
 				},
 				{
-					"id": "1a9e4c37-de16-43e8-b5d7-90f841e9900d",
+					"id": "a0ec6f62-42ed-409b-8022-761151e9a6c9",
 					"name": "Success2",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/projects",
@@ -405,8 +403,8 @@
 			},
 			"response": [
 				{
-					"id": "398bdf8e-b98d-4f63-b1b8-53997b252368",
-					"name": "Success",
+					"id": "bd0d82ac-231f-4e96-be11-6130cee70c80",
+					"name": "Success-John",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/projects/voter/{{user}}",
 						"method": "GET",
@@ -414,9 +412,7 @@
 							{
 								"key": "x-access-token",
 								"value": "{{token}}",
-								"type": "text",
-								"enabled": true,
-								"warning": ""
+								"enabled": true
 							}
 						],
 						"body": {}
@@ -459,13 +455,13 @@
 						{
 							"name": "Date",
 							"key": "Date",
-							"value": "Sat, 11 Feb 2017 08:01:54 GMT",
+							"value": "Sat, 11 Feb 2017 21:33:06 GMT",
 							"description": "The date and time that the message was sent"
 						},
 						{
 							"name": "ETag",
 							"key": "ETag",
-							"value": "W/\"18d-k6pqb+iJEH0d1o8CWZXlNA\"",
+							"value": "W/\"18d-7Iye7A3lvgtGKmTpIsFmMQ\"",
 							"description": "An identifier for a specific version of a resource, often a message digest"
 						},
 						{
@@ -476,15 +472,15 @@
 						}
 					],
 					"cookie": [],
-					"responseTime": 25,
-					"body": "[{\"projectId\":\"SyUozB3ul\",\"description\":\"some desc\",\"location\":\"some location\",\"tags\":[\"tag1\",\"tag2\"],\"voteRestriction\":\"some vote restriction\",\"expiryDate\":1486977874,\"cost\":100000,\"costCovered\":0},{\"projectId\":\"HyxpfShue\",\"description\":\"some desc\",\"location\":\"some location\",\"tags\":[\"tag1\",\"tag2\"],\"voteRestriction\":\"some vote restriction\",\"expiryDate\":1486977874,\"cost\":100000,\"costCovered\":0}]"
+					"responseTime": 18,
+					"body": "[{\"projectId\":\"3324234\",\"name\":\"Repair cycle path next to Zomaarweg\",\"description\":\"The cycle path next to Zomaarweg is not safe and is in urgent need of repair\",\"location\":\"Amsterdam Centrum\",\"tags\":[\"infrastructure\",\"leisure\"],\"voteRestrictionField\":\"LOCATION\",\"voteRestrictionValues\":[\"Amsterdam Oost\",\"Amsterdam Centrum\"],\"expiryDate\":1486977874,\"cost\":10000,\"costCovered\":0,\"pictureId\":1200}]"
 				}
 			]
 		},
 		{
 			"name": "{{url}}/api/v1/voters",
 			"request": {
-				"url": "{{url}}/api/v1/voters",
+				"url": "{{url}}/api/v1/voter",
 				"method": "POST",
 				"header": [
 					{
@@ -500,13 +496,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \n\t\"_voterId\": \"john\",\n\t\"_location\": \"Amsterdam Centrum\",\n\t\"_gender\": \"MALE\",\n\t\"_dob\": 315582360\n}"
+					"raw": "{ \n\t\"_voterId\": \"janneke\",\n\t\"_location\": \"Groningen\",\n\t\"_gender\": \"FEMALE\",\n\t\"_dob\": 315528373\n}"
 				},
 				"description": ""
 			},
 			"response": [
 				{
-					"id": "385b0e34-cba0-42e1-b374-3e0ce414cfa7",
+					"id": "28502cc5-1ec5-4c64-9e8f-b1c8cf54b3bd",
 					"name": "Success",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/projects",
@@ -785,7 +781,7 @@
 					"body": "{\"result\":\"Tx fa59502f-b0e8-4a4b-9b1d-878be797b151 complete\"}"
 				},
 				{
-					"id": "acea025c-b31c-45a0-b5e9-7b183bf62dfe",
+					"id": "b120c63c-1757-4d04-8983-2960f2430f7d",
 					"name": "Success1",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/voters",
@@ -867,7 +863,7 @@
 					"body": "{\"result\":\"Tx 2dd8f9f0-6435-4f05-9813-b35a31c30018 complete\"}"
 				},
 				{
-					"id": "4e2fb82e-4b00-4c12-8305-5bad67914414",
+					"id": "c9efe77f-69c7-46c8-93b2-8879ca54aefc",
 					"name": "Success2",
 					"originalRequest": {
 						"url": "{{url}}/api/v1/voters",
@@ -953,7 +949,7 @@
 		{
 			"name": "{{url}}/api/v1/voter/{{user}}",
 			"request": {
-				"url": "{{url}}/api/v1/voters/{{user}}",
+				"url": "{{url}}/api/v1/voter/{{user}}",
 				"method": "GET",
 				"header": [
 					{
@@ -967,18 +963,16 @@
 			},
 			"response": [
 				{
-					"id": "980aa71d-7740-45fe-be2e-4f217126e37f",
-					"name": "Success",
+					"id": "5137f62a-322f-48b1-a84c-212bd929d908",
+					"name": "Success-John",
 					"originalRequest": {
-						"url": "{{url}}/api/v1/projects/voter/{{user}}",
+						"url": "{{url}}/api/v1/voters/{{user}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-access-token",
 								"value": "{{token}}",
-								"type": "text",
-								"enabled": true,
-								"warning": ""
+								"enabled": true
 							}
 						],
 						"body": {}
@@ -1009,7 +1003,7 @@
 						{
 							"name": "Content-Length",
 							"key": "Content-Length",
-							"value": "397",
+							"value": "97",
 							"description": "The length of the response body in octets (8-bit bytes)"
 						},
 						{
@@ -1021,13 +1015,13 @@
 						{
 							"name": "Date",
 							"key": "Date",
-							"value": "Sat, 11 Feb 2017 08:01:54 GMT",
+							"value": "Sat, 11 Feb 2017 21:33:23 GMT",
 							"description": "The date and time that the message was sent"
 						},
 						{
 							"name": "ETag",
 							"key": "ETag",
-							"value": "W/\"18d-k6pqb+iJEH0d1o8CWZXlNA\"",
+							"value": "W/\"61-YnKtYMQv0lRZrNIpTTPPiA\"",
 							"description": "An identifier for a specific version of a resource, often a message digest"
 						},
 						{
@@ -1038,8 +1032,650 @@
 						}
 					],
 					"cookie": [],
-					"responseTime": 25,
-					"body": "[{\"projectId\":\"SyUozB3ul\",\"description\":\"some desc\",\"location\":\"some location\",\"tags\":[\"tag1\",\"tag2\"],\"voteRestriction\":\"some vote restriction\",\"expiryDate\":1486977874,\"cost\":100000,\"costCovered\":0},{\"projectId\":\"HyxpfShue\",\"description\":\"some desc\",\"location\":\"some location\",\"tags\":[\"tag1\",\"tag2\"],\"voteRestriction\":\"some vote restriction\",\"expiryDate\":1486977874,\"cost\":100000,\"costCovered\":0}]"
+					"responseTime": 17,
+					"body": "{\"voterId\":\"john\",\"location\":\"Amsterdam Centrum\",\"gender\":\"MALE\",\"dob\":315582360,\"projectIds\":[]}"
+				}
+			]
+		},
+		{
+			"name": "{{url}}/api/v1/voters/vote",
+			"request": {
+				"url": "{{url}}/api/v1/voter/vote",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"_voterId\": \"john\",\n\t\"_projectId\": \"3324234\",\n\t\"_votePercent\": 60\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "1f742e5b-2a2d-4b59-8474-4c034084d50d",
+					"name": "Success",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/projects",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"warning": ""
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								"{",
+								" ",
+								"\"",
+								"_",
+								"d",
+								"e",
+								"s",
+								"c",
+								"r",
+								"i",
+								"p",
+								"t",
+								"i",
+								"o",
+								"n",
+								"\"",
+								":",
+								" ",
+								"\"",
+								"s",
+								"o",
+								"m",
+								"e",
+								" ",
+								"d",
+								"e",
+								"s",
+								"c",
+								"\"",
+								",",
+								" ",
+								"\"",
+								"_",
+								"l",
+								"o",
+								"c",
+								"a",
+								"t",
+								"i",
+								"o",
+								"n",
+								"\"",
+								":",
+								" ",
+								"\"",
+								"s",
+								"o",
+								"m",
+								"e",
+								" ",
+								"l",
+								"o",
+								"c",
+								"a",
+								"t",
+								"i",
+								"o",
+								"n",
+								"\"",
+								",",
+								" ",
+								"\"",
+								"_",
+								"t",
+								"a",
+								"g",
+								"s",
+								"\"",
+								":",
+								"[",
+								"\"",
+								"t",
+								"a",
+								"g",
+								"1",
+								"\"",
+								",",
+								" ",
+								"\"",
+								"t",
+								"a",
+								"g",
+								"2",
+								"\"",
+								"]",
+								",",
+								" ",
+								"\"",
+								"_",
+								"v",
+								"o",
+								"t",
+								"e",
+								"R",
+								"e",
+								"s",
+								"t",
+								"r",
+								"i",
+								"c",
+								"t",
+								"i",
+								"o",
+								"n",
+								"\"",
+								":",
+								" ",
+								"\"",
+								"s",
+								"o",
+								"m",
+								"e",
+								" ",
+								"v",
+								"o",
+								"t",
+								"e",
+								" ",
+								"r",
+								"e",
+								"s",
+								"t",
+								"r",
+								"i",
+								"c",
+								"t",
+								"i",
+								"o",
+								"n",
+								"\"",
+								",",
+								" ",
+								"\"",
+								"_",
+								"e",
+								"x",
+								"p",
+								"i",
+								"r",
+								"y",
+								"D",
+								"a",
+								"t",
+								"e",
+								"\"",
+								":",
+								" ",
+								"1",
+								"4",
+								"8",
+								"6",
+								"9",
+								"7",
+								"7",
+								"8",
+								"7",
+								"4",
+								",",
+								" ",
+								"\"",
+								"_",
+								"c",
+								"o",
+								"s",
+								"t",
+								"\"",
+								":",
+								" ",
+								"1",
+								"0",
+								"0",
+								"0",
+								"0",
+								"0",
+								",",
+								" ",
+								"\"",
+								"_",
+								"c",
+								"o",
+								"s",
+								"t",
+								"C",
+								"o",
+								"v",
+								"e",
+								"r",
+								"e",
+								"d",
+								"\"",
+								":",
+								" ",
+								"0",
+								"}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 07:52:29 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-WmxUVLFEJ+nH3A96i6AFLg\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5026,
+					"body": "{\"result\":\"Tx fa59502f-b0e8-4a4b-9b1d-878be797b151 complete\"}"
+				},
+				{
+					"id": "4721260b-3e34-4cc9-a179-2700eb13739c",
+					"name": "Success1",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/voters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_voterId\": \"john\",\n\t\"_location\": \"Amsterdam Centrum\",\n\t\"_gender\": \"MALE\",\n\t\"_dob\": 315582360\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 14:02:06 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-MLyjcZSeBOGrZGSaGw4PMw\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5026,
+					"body": "{\"result\":\"Tx 2dd8f9f0-6435-4f05-9813-b35a31c30018 complete\"}"
+				},
+				{
+					"id": "1397b8b5-3e53-40e9-83bb-5d3a8e709c02",
+					"name": "Success2",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/voters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_voterId\": \"janneke\",\n\t\"_location\": \"Groningen\",\n\t\"_gender\": \"FEMALE\",\n\t\"_dob\": 315528373\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 14:12:21 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-qyj2j+gxXYyU45M8nBxkrQ\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5041,
+					"body": "{\"result\":\"Tx 8fdb73de-7c51-4f2c-a900-0736560ac50f complete\"}"
+				},
+				{
+					"id": "f474e8e8-67c3-4ccc-b6d4-dfc47c641b49",
+					"name": "Success-John",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/voters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content"
+							},
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"_voterId\": \"john\",\n\t\"_projectId\": \"3324234\",\n\t\"_votePercent\": 60\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "61",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 21:35:49 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"3d-jN5/p4zt2heOsYmMUestEQ\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 5039,
+					"body": "{\"result\":\"Tx 0aeab0c2-d810-424d-87d6-2036018a6c4f complete\"}"
+				}
+			]
+		},
+		{
+			"name": "{{url}}/api/v1/voter/voteForProject/3324234",
+			"request": {
+				"url": "{{url}}/api/v1/voter/voteForProject/3324234",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "3afe56cd-b2d8-4990-af21-f7f444bc8f76",
+					"name": "Success-John",
+					"originalRequest": {
+						"url": "{{url}}/api/v1/voters/{{user}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"enabled": true
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, x-access-token",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "97",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sat, 11 Feb 2017 21:33:23 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "ETag",
+							"key": "ETag",
+							"value": "W/\"61-YnKtYMQv0lRZrNIpTTPPiA\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 17,
+					"body": "{\"voterId\":\"john\",\"location\":\"Amsterdam Centrum\",\"gender\":\"MALE\",\"dob\":315582360,\"projectIds\":[]}"
 				}
 			]
 		}

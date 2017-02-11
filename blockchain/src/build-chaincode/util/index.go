@@ -10,14 +10,18 @@ var UsersIndexName = "_users"
 var ThingsIndexName = "_things"
 var ProjectsIndexName = "_projects"
 var VotersIndexName = "_voters"
+var VotesIndexName = "_votes"
 
 var VoterIndexPrefix = "voter_" //seperate namespace for voter and user data
+var VoteIndexPrefix = "vote_" //seperate namespace for voter and vote data
+var ProjectVotePrefix = "projectvotes_"
 
 var indexNames = []string{
 	UsersIndexName,
 	ThingsIndexName,
 	ProjectsIndexName,
 	VotersIndexName,
+	VotesIndexName,
 }
 
 //id = project.ProjectID, indexName = "_projects", byte = projectAsBytes

@@ -56,9 +56,13 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		
 		return nil, t.addProject(stub, args[0])
 
-	}  else if functionName == "addVoter" {
+	} else if functionName == "addVoter" {
 		
 		return nil, t.addVoter(stub, args[0])
+
+	} else if functionName == "vote" {
+		
+		return nil, t.vote(stub, args[0])
 
 	} 
 
@@ -123,6 +127,16 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 
 		return voter, nil
 		
+	} else if functionName == "getVoteForProjectByVoter" {
+
+		voter, err := util.GetVoteForProjectByVoter(stub, args[0], args[1])
+		
+		if err != nil {
+			return nil, errors.New("could not retrieve vote for project" + args[0] + ", voterId = " + args[1] + "reason: " + err.Error())
+		}
+
+		return voter, nil
+		
 	}
 
 	return nil, errors.New("Received unknown query function name")
@@ -172,7 +186,18 @@ func (t *Chaincode) addProject(stub shim.ChaincodeStubInterface, projectJSONObje
 		}
 
 		util.StoreObjectInChain(stub, project.ProjectID, util.ProjectsIndexName, projectAsBytes)
-
+		
+		//also store empty array of votes for this project
+		emptyVotesAsBytes, errVotesMarshalling := json.Marshal([]entities.Vote{});
+		
+		if errVotesMarshalling != nil {
+			return errors.New("Error marshalling []entities.Vote{}, reason: " + err.Error())
+		}
+		
+		projectVoteKey := util.ProjectVotePrefix + project.ProjectID
+		logger.Infof("Initializing emtpy votes for key = "+ projectVoteKey + ", emptyVotesAsBytes = " + string(emptyVotesAsBytes))
+		stub.PutState(projectVoteKey, emptyVotesAsBytes)
+		
 		return nil
 	
 }
@@ -193,6 +218,83 @@ func (t *Chaincode) addVoter(stub shim.ChaincodeStubInterface, voterJSONObject s
 
 		//util.StoreObjectInChain(stub, voter.VoterId, util.VotersIndexName, voterAsBytes)
 		util.StoreObjectInChain(stub, util.VoterIndexPrefix + voter.VoterId, util.VotersIndexName, voterAsBytes)
+
+		return nil
+	
+}
+
+func (t *Chaincode) vote(stub shim.ChaincodeStubInterface, voteJSONObject string) error {
+	
+		logger.Infof("Voting START voteJSONObject=" + voteJSONObject)
+
+		var vote entities.Vote
+		
+		if err := json.Unmarshal([]byte(voteJSONObject), &vote); err != nil {
+			return errors.New("Error while unmarshalling vote, reason: " + err.Error())
+		}
+
+		logger.Infof("Marshalling vote")
+		voteAsBytes, err := json.Marshal(vote);
+		logger.Infof("Marshalled vote")
+		
+		if err != nil {
+			return errors.New("Error marshalling vote, reason: " + err.Error())
+		}
+		
+		//validate the vote
+		logger.Infof("Validating the vote")
+		projectAsBytes, err := stub.GetState(vote.ProjectID)
+		if err != nil {
+			return errors.New("Could not retrieve project for ID " + vote.ProjectID + " reason: " + err.Error())
+		}
+
+		var project entities.Project
+		err = json.Unmarshal(projectAsBytes, &project)
+		if err != nil {
+			return errors.New("Error while unmarshalling projectAsBytes when voting, reason: " + err.Error())
+		}
+
+		
+		logger.Infof("Will validate vote for project " + string(projectAsBytes))
+		if !util.ValidateProjectForVoterId(stub, project, vote.VoterId) {
+			return errors.New("Voter is not allowed to vote!")
+		}
+		
+		//vote has been validated
+		voteKey := util.VoteIndexPrefix + "_" + vote.VoterId + "_" + vote.ProjectID
+		logger.Infof("Vote valid. Will save it in blockchain with key " + voteKey)
+		
+		//save vote on the blockchain
+		util.StoreObjectInChain(stub, voteKey, util.VotesIndexName, voteAsBytes)
+		logger.Infof("Saved vote in blockchain with key " + voteKey)
+		
+		//save projectvote
+		//get existing votes for this project
+		existingVotesForProject, err := util.GetVotesByProjectID(stub, vote.ProjectID)
+		if err != nil {
+			return errors.New("Error while getting existingVotesForProject, reason: " + err.Error())
+		}
+		logger.Infof("Found existingVotesForProject with length =%d " , len(existingVotesForProject))
+		
+		existingVotesForProject = append(existingVotesForProject, vote)
+		logger.Infof("New existingVotesForProject with length =%d " , len(existingVotesForProject))
+		
+		existingVotesForProjectAsBytes, err := json.Marshal(existingVotesForProject);
+		if err != nil {
+			return errors.New("Error while marshalling existingVotesForProject, reason: " + err.Error())
+		}
+		stub.PutState(util.ProjectVotePrefix + vote.ProjectID, existingVotesForProjectAsBytes)
+		logger.Infof("Added current vote to existing votes for this project. existingVotesForProjectAsBytes = " + string(existingVotesForProjectAsBytes))
+
+		
+		//update project costCovered
+		project.CostCovered = project.CostCovered + vote.VotePercent
+		projectAsBytes, err = json.Marshal(project);
+		if err != nil {
+			return errors.New("Could not marshal project after updating cost covered reason: " + err.Error())
+		}
+		stub.PutState(project.ProjectID, projectAsBytes)
+		logger.Infof("Updated costCovered for project. projectAsBytes = " + string(projectAsBytes))
 
 		return nil
 	
@@ -280,6 +382,17 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 		}
 
 		util.StoreObjectInChain(stub, testProject.ProjectID, util.ProjectsIndexName, testProjectAsBytes)
+
+		//also store empty array of votes for this project
+		emptyVotesAsBytes, errVotesMarshalling := json.Marshal([]entities.Vote{});
+		
+		if errVotesMarshalling != nil {
+			return errors.New("Error marshalling []entities.Vote{}, reason: " + err.Error())
+		}
+		
+		projectVoteKey := util.ProjectVotePrefix + testProject.ProjectID
+		logger.Infof("Initializing emtpy votes for key = "+ projectVoteKey + ", emptyVotesAsBytes = " + string(emptyVotesAsBytes))
+		stub.PutState(projectVoteKey, emptyVotesAsBytes)
 
 	}
 	

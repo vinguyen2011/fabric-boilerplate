@@ -7,6 +7,8 @@ import (
 	"build-chaincode/entities"
 )
 
+var logger = shim.NewLogger("fabric-boilerplate")
+
 func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, error) {
 	userIDAsBytes, err := stub.ReadCertAttribute("userID")
 	if err != nil {
@@ -69,6 +71,7 @@ func ValidateProjectForVoterId(stub shim.ChaincodeStubInterface, project entitie
 	voter, err := GetVoter(stub, voterID)
 
 	if err != nil {
+		logger.Errorf("Could not find voter with  voterID = " + voterID)
 		return false
 	}
 
@@ -82,6 +85,7 @@ func ValidateProjectForVoter(project entities.Project, voter entities.Voter) (bo
 	for _, votedProjectID := range voter.ProjectIDs {
 		if votedProjectID == project.ProjectID {
 			//user already voted. double spend!
+			logger.Errorf("user already voted. double spend! votedProjectID = " + votedProjectID + ", project.ProjectID = " + project.ProjectID)
 			return false
 		}
 	}
@@ -97,7 +101,8 @@ func ValidateProjectForVoter(project entities.Project, voter entities.Voter) (bo
 		
 	}
 	
-	return false; 
+	//(no restriction || VoteRestrictionField not in (LOCATION, GENDER)) ==> valid
+	return true; 
 	
 }
 
@@ -110,6 +115,46 @@ func ContainsInList(list []string, item string) (bool) {
 	}
 	
 	return false;
+	
+}
+
+func GetVoteForProjectByVoter(stub shim.ChaincodeStubInterface, projectID string, voterID string) (entities.Vote, error) {
+	
+	logger.Infof("GetVoteForProjectByVoter START projectID=" + projectID +", voterID="+ voterID)
+	voteKey := VoteIndexPrefix + "_" + voterID + "_" + projectID
+	logger.Infof("voteKey = "+voteKey)
+	
+	voteAsBytes, err := stub.GetState(voteKey)
+	
+	if err != nil {
+		return entities.Vote{}, errors.New("Unable to retrieve vote for projectID " + projectID + ", and voterID=" + voterID + "reason: " + err.Error())
+	}
+	logger.Infof("voteAsBytes = " + string(voteAsBytes))
+	
+	var vote entities.Vote
+	err = json.Unmarshal(voteAsBytes, &vote)
+	if err != nil {
+		return entities.Vote{}, errors.New("Error while unmarshalling voteAsBytes, reason: " + err.Error())
+	}
+
+	return vote, nil
+}
+
+func GetVotesByProjectID(stub shim.ChaincodeStubInterface, projectID string) ([]entities.Vote, error) {
+	
+	votesAsBytes, err := stub.GetState(ProjectVotePrefix + projectID)
+	if err != nil {
+		return []entities.Vote{}, errors.New("Unable to retrieve votes for projectID " + projectID + ", reason: " + err.Error())
+	}
+	logger.Infof("votesAsBytes = "+string(votesAsBytes))
+	
+	var votes []entities.Vote
+	err = json.Unmarshal(votesAsBytes, &votes)
+	if err != nil {
+		return []entities.Vote{}, errors.New("Error while unmarshalling votesAsBytes, reason: " + err.Error())
+	}
+	
+	return votes, nil
 	
 }
 

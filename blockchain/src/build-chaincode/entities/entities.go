@@ -79,7 +79,7 @@ type Voter struct {
 type Vote struct {
 	VoterId				string		`json:"voterId"`
 	ProjectID   		string 		`json:"projectId"`
-	VotePercent			float32		`json:"votePercent"`
+	VotePercent			uint64		`json:"votePercent"`
 }
 
 type ProjectVotes struct {
