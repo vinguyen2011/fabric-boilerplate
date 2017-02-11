@@ -1,0 +1,25 @@
+{
+    "voters": [
+        {
+            "voterId": "john",
+            "location": "Amsterdam Centrum",
+            "gender": "MALE",
+            "dob": 315582360,
+            "projectIds": []
+        },
+        {
+            "voterId": "janneke",
+            "location": "Groningen",
+            "gender": "FEMALE",
+            "dob": 315528373,
+            "projectIds": []
+        },
+        {
+            "voterId": "eva",
+            "location": "Amsterdam Centrum",
+            "gender": "FEMALE",
+            "dob": 315526767,
+            "projectIds": []
+        }
+    ]
+}

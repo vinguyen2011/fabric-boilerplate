@@ -1,0 +1,30 @@
+{
+    "projects": [
+        {
+            "projectId": "3324234",
+            "name": "Repair cycle path next to Zomaarweg",
+        	"description": "The cycle path next to Zomaarweg is not safe and is in urgent need of repair",
+        	"location": "Amsterdam Centrum",
+        	"tags":["infrastructure", "leisure"],
+        	"voteRestrictionField": "LOCATION",
+        	"voteRestrictionValues": ["Amsterdam Oost", "Amsterdam Centrum"],
+        	"expiryDate": 1486977874,
+        	"cost": 10000,
+        	"costCovered": 0,
+        	"pictureId": 1200
+        },
+        {
+            "projectId": "1123324",
+        	"name": "Increase maternity leave",
+        	"description": "Increate maternity leave for working women",
+        	"location": "Netherlands",
+        	"tags":["life"],
+        	"voteRestrictionField": "GENDER",
+        	"voteRestrictionValues": ["FEMALE"],
+        	"expiryDate": 1486977874,
+        	"cost": 10000,
+        	"costCovered": 0,
+        	"pictureId": 1200
+        }
+    ]
+}
