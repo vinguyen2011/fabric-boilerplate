@@ -1,0 +1,23 @@
+exclude:
+- /clean.sh
+- /client/.*
+- /install.sh
+- /server/gruntfile.js
+- /server/src/.baseDir.ts
+- /server/src/app.ts
+- /server/src/auth/.*
+- /server/src/blockchain/Blockchain.ts
+- /server/src/blockchain/BlockchainBluemix.ts
+- /server/src/blockchain/BlockchainFactory.ts
+- /server/src/blockchain/BlockchainLocal.ts
+- /server/src/blockchain/ChaincodeBluemixConfig.ts
+- /server/src/entities/thing.model.ts
+- /server/src/utils/BlockchainUserError.ts
+- /server/src/utils/UserAuthenticator.ts
+- /server/test/test.ts
+component_depth: 1
+languages:
+- go
+- javascript
+- script
+- typescript
